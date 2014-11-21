@@ -1,3 +1,5 @@
+import java.sql.*;
+import java.io.*;
 public class Editorial {
 //	private int idEditorial;
 //	private String nombre;

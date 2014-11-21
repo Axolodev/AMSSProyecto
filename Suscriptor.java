@@ -70,8 +70,8 @@ public void setFechaInicioSuscripcion(
 
 
 public void cancelarSuscripcion(int idSuscriptor) {
-	fechaInicioSuscripcion = "";
-	fechaVencimientoSuscripcion = "";
+	String fechaInicioSuscripcion = "";
+	String fechaVencimientoSuscripcion = "";
 	try {
 		String s = "UPDATE Suscriptor SET fechaVencimientoSuscripcion = " + fechaVencimientoSuscripcion + " WHERE idSuscriptor = " + idSuscriptor;
 		stmt.executeUpdate(s);
@@ -117,14 +117,15 @@ String[] parts;
 	}
 
 	public boolean login(int id) {
-		return this.idSuscriptor == id;
+		// return this.idSuscriptor == id;
+		return true;
 	}
 
-	public void leerArticulo(Articulo articulo) {
+	public void leerArticulo(int idArticulo) {
 		BufferedReader br;
 		try {
 			br = new BufferedReader(new FileReader("Articulos\\Art"
-				+ articulo.getIdArticulo() + ".html"));
+				+ idArticulo + ".html"));
 			String line = null;
 
 			while ((line = br.readLine()) != null) {

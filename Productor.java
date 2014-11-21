@@ -22,7 +22,7 @@ public class Productor extends Persona {
 	 * @param art
 	 * @return
 	 */
-	public Articulo revisarArticulo(Articulo idArticulo, boolean aprovado) {
+	public void revisarArticulo(Articulo idArticulo, boolean aprovado) {
 		try {
 		String s = "UPDATE articulo SET estadoArticulo = " + aprovado + " WHERE idArticulo = " + idArticulo;
 		stmt.executeUpdate(s);

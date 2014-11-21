@@ -1,3 +1,5 @@
+import java.sql.*;
+import java.io.*;
 public class Pedido {
 //	private int idPedido;
 //	private String fechaPedido;

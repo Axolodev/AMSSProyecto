@@ -19,10 +19,6 @@ public class EditorJefe extends Persona {
 	}
 
 
-	public String evaluarJuez(Juez idJuez, String evaluacion) {
-		return "El " + juez.toString() + " ha sido evaluado " + evaluacion;
-	}
-
 	public void revisarArticulo(Articulo idArticulo, boolean aprovado) {
 	try {
 		String s = "UPDATE articulo SET estadoArticulo = " + aprovado + " WHERE idArticulo = " + idArticulo;

@@ -45,13 +45,13 @@ public class Empleado extends Persona {
 		Articulo articulo = new Articulo();
 		try {
 			PrintWriter out = new PrintWriter(new FileWriter("Articulos\\art"
-					+ articulo.getIdArticulo(idArticulo) + ".html"));
+					+ idArticulo + ".html"));
 			out.println("<html><head><title>" + articulo.getNombre(idArticulo)
 					+ "</title> </head><body>");
 
 			BufferedReader br;
 			br = new BufferedReader(new FileReader("Articulos\\Art"
-					+ articulo.getIdArticulo(idArticulo) + ".html"));
+					+ idArticulo + ".html"));
 			String line = null;
 			out.println("<p>");
 			while ((line = br.readLine()) != null) {

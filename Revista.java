@@ -1,3 +1,5 @@
+import java.sql.*;
+import java.io.*;
 public class Revista {
     Connection conn;
     Statement stmt;

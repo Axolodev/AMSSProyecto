@@ -41,7 +41,7 @@ public void setNombre(int idArticulo, String nombre) {
 	}
 }
 
-public String getFechaRevision(int idArtiulo) {
+public String getFechaRevision(int idArticulo) {
 	String fechaRevision = ""; 
 	try {
 		stmt.executeQuery ("SELECT fechaRevision FROM articulo WHERE idArticulo = " + idArticulo);
