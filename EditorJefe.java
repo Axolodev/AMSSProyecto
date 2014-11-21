@@ -1,24 +1,38 @@
+import java.sql.*;
+import java.io.*;
+
 public class EditorJefe extends Persona {
+	Connection conn;
+	Statement stmt;
 
-	private int id_editor;
-
-	public EditorJefe(int id_editor) {
-		this.id_editor = id_editor;
+	public EditorJefe() {
+		try {
+			String userName = "root";
+			String password = "";
+			String url = "jdbc:mysql://localhost/SengBytes";
+			Class.forName ("com.mysql.jdbc.Driver").newInstance();
+			conn = DriverManager.getConnection (url, userName, password);
+			stmt = conn.createStatement();
+		}catch (Exception e) { 
+			System.out.println ("Cannot connect to database server"); 
+		}	
 	}
 
-	public int getId_editor() {
-		return id_editor;
-	}
 
-	public String evaluarJuez(Juez juez, String evaluacion) {
+	public String evaluarJuez(Juez idJuez, String evaluacion) {
 		return "El " + juez.toString() + " ha sido evaluado " + evaluacion;
 	}
 
-	public Articulo revisarArticulo(Articulo art, boolean aprovado) {
-		art.setEstadoArticulo(aprovado);
-		return art;
+	public void revisarArticulo(Articulo idArticulo, boolean aprovado) {
+	try {
+		String s = "UPDATE articulo SET estadoArticulo = " + aprovado + " WHERE idArticulo = " + idArticulo;
+		stmt.executeUpdate(s);
+	} catch (SQLException e) {
+		System.out.println ("Cannot execute revisarArticulo()" + e);
 	}
-	public void seleccionarJuez(Autor autor){
+	}
+
+	public void seleccionarJuez(Autor idAutor){
 		//Generar nuevo juez con el autor ingresado
 	}
 }

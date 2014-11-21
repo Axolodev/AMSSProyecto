@@ -18,7 +18,7 @@ public class Articulo {
 		}
 	}
 
-	protected String getNombre(int idArticulo) {
+	public String getNombre(int idArticulo) {
 		String nombre = ""; 
 		try {
 			stmt.executeQuery ("SELECT nombre FROM articulo WHERE idArticulo = " + idArticulo);
@@ -32,16 +32,16 @@ public class Articulo {
  return nombre;
 }
 
-protected void setNombre(int idArticulo, String nombre) {
+public void setNombre(int idArticulo, String nombre) {
 	try {
 		String s = "UPDATE articulo SET nombre = " + nombre + " WHERE idArticulo = " + idArticulo;
 		stmt.executeUpdate(s);
 	} catch (SQLException e) {
-		System.out.println ("Cannot execute disposicion()" + e);
+		System.out.println ("Cannot execute setNombre()" + e);
 	}
 }
 
-protected String getFechaRevision(int idArtiulo) {
+public String getFechaRevision(int idArtiulo) {
 	String fechaRevision = ""; 
 	try {
 		stmt.executeQuery ("SELECT fechaRevision FROM articulo WHERE idArticulo = " + idArticulo);
@@ -56,16 +56,16 @@ protected String getFechaRevision(int idArtiulo) {
      return fechaRevision;
  }
 
- protected void setFechaRevision(int idArticulo, String fechaRevision) {
+ public void setFechaRevision(int idArticulo, String fechaRevision) {
  	try {
 		String s = "UPDATE articulo SET fechaRevision = " + fechaRevision + " WHERE idArticulo = " + idArticulo;
 		stmt.executeUpdate(s);
 	} catch (SQLException e) {
-		System.out.println ("Cannot execute disposicion()" + e);
+		System.out.println ("Cannot execute setFechaRevision()" + e);
 	}
  }
 
- protected String getFechaPublicacion(int idArticulo) {
+ public String getFechaPublicacion(int idArticulo) {
  	String fechaPublicacion = ""; 
  	try {
  		stmt.executeQuery ("SELECT fechaPublicacion FROM articulo WHERE idArticulo = " + idArticulo);
@@ -80,19 +80,19 @@ protected String getFechaRevision(int idArtiulo) {
      return fechaPublicacion;
  }
 
- protected void setFechaPublicacion(int idArticulo, String fechaPublicacion) {
+ public void setFechaPublicacion(int idArticulo, String fechaPublicacion) {
  	try {
 		String s = "UPDATE articulo SET fechaPublicacion = " + fechaPublicacion + " WHERE idArticulo = " + idArticulo;
 		stmt.executeUpdate(s);
 	} catch (SQLException e) {
-		System.out.println ("Cannot execute disposicion()" + e);
+		System.out.println ("Cannot execute setFechaPublicacion()" + e);
 	}
  }
 
- protected boolean getEstadoArticulo(int idArticulo) {
+ public boolean getEstadoArticulo(int idArticulo) {
  	boolean estadoArticulo = false;
  	try {
- 		stmt.executeQuery ("SELECT saldo FROM articulo WHERE idArticulo = " + idArticulo);
+ 		stmt.executeQuery ("SELECT estadoArticulo FROM articulo WHERE idArticulo = " + idArticulo);
  		ResultSet rs = stmt.getResultSet();
          rs.next(); //Va al registro ya validado
          estadoArticulo = rs.getBoolean("estadoArticulo");
@@ -104,12 +104,12 @@ protected String getFechaRevision(int idArtiulo) {
      return estadoArticulo;
  }
 
- protected void setEstadoArticulo(int idArticulo, boolean estadoArticulo) {
+ public void setEstadoArticulo(int idArticulo, boolean estadoArticulo) {
  	try {
 		String s = "UPDATE articulo SET estadoArticulo = " + estadoArticulo + " WHERE idArticulo = " + idArticulo;
 		stmt.executeUpdate(s);
 	} catch (SQLException e) {
-		System.out.println ("Cannot execute disposicion()" + e);
+		System.out.println ("Cannot execute setEstadoArticulo()" + e);
 	}
  }
 
