@@ -18,10 +18,10 @@ public class Pedido {
       }catch (Exception e) { System.out.println ("Cannot connect to database server"); }
     }
 
-	protected String getNombre(int idPedido) {
+	public String getNombre(int idPedido) {
 		String nombre = ""; 
       try {
-         stmt.executeQuery ("SELECT saldo FROM pedido WHERE idPedido = " + idPedido);
+         stmt.executeQuery ("SELECT nombre FROM pedido WHERE idPedido = " + idPedido);
          ResultSet rs = stmt.getResultSet();
          rs.next(); //Va al registro ya validado
          nombre = rs.getString("nombre");
@@ -31,18 +31,18 @@ public class Pedido {
       return nombre;
 	}
 
-	protected void setNombre(int idPedido, String nombre) {
+	public void setNombre(int idPedido, String nombre) {
 		try {
-         String s = "UPDATE cuenta SET nombre = " + nombre + " WHERE idPedido = " + idPedido;
+         String s = "UPDATE Pedido SET nombre = " + nombre + " WHERE idPedido = " + idPedido;
          stmt.executeUpdate(s);
       } catch (SQLException e) {System.out.println ("Cannot execute disposicion()" + e);}
 	}
 
-    protected String getFechaPedido() {
+    public String getFechaPedido() {
 		return fechaPedido;
 	}
 
-	protected void setFechaPedido(String fechaPedido) {
+	public void setFechaPedido(String fechaPedido) {
 		this.fechaPedido = fechaPedido;
 	}
 

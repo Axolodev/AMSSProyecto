@@ -20,10 +20,10 @@ public class Editorial {
       }catch (Exception e) { System.out.println ("Cannot connect to database server"); }
     }
 
-	protected String getNombre(int idEditorial) {
+	public String getNombre(int idEditorial) {
 		String nombre = ""; 
       try {
-         stmt.executeQuery ("SELECT saldo FROM Editorial WHERE idEditorial = " + idEditorial);
+         stmt.executeQuery ("SELECT nombre FROM Editorial WHERE idEditorial = " + idEditorial);
          ResultSet rs = stmt.getResultSet();
          rs.next(); //Va al registro ya validado
          nombre = rs.getString("nombre");
@@ -33,26 +33,26 @@ public class Editorial {
       return nombre;
 	}
 
-	protected void setNombre(int idEditorial, String nombre) {
+	public void setNombre(int idEditorial, String nombre) {
 		try {
-         String s = "UPDATE cuenta SET nombre = " + nombre + " WHERE idEditorial = " + idEditorial;
+         String s = "UPDATE Editorial SET nombre = " + nombre + " WHERE idEditorial = " + idEditorial;
          stmt.executeUpdate(s);
       } catch (SQLException e) {System.out.println ("Cannot execute disposicion()" + e);}
 	}
 
-	protected String getDireccion() {
+	public String getDireccion() {
 		return direccion;
 	}
 
-	protected void setDireccion(String direccion) {
+	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
 
-	protected String getEncargado() {
+	public String getEncargado() {
 		return encargado;
 	}
 
-	protected void setEncargado(int encargado) {
+	public void setEncargado(int encargado) {
 		this.encargado = encargado;
 	}	
 }

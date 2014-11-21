@@ -15,10 +15,10 @@ public class Suscripcion {
       }catch (Exception e) { System.out.println ("Cannot connect to database server"); }
     }
 
-    protected String getNombre(int idSuscripcion) {
+    public String getNombre(int idSuscripcion) {
 		String nombre = ""; 
       try {
-         stmt.executeQuery ("SELECT saldo FROM Suscripcion WHERE idSuscripcion = " + idSuscripcion);
+         stmt.executeQuery ("SELECT nombre FROM Suscripcion WHERE idSuscripcion = " + idSuscripcion);
          ResultSet rs = stmt.getResultSet();
          rs.next(); //Va al registro ya validado
          nombre = rs.getString("nombre");
@@ -28,9 +28,9 @@ public class Suscripcion {
       return nombre;
 	}
     
-	protected void setNombre(int idSuscripcion, String nombre) {
+	public void setNombre(int idSuscripcion, String nombre) {
 		try {
-         String s = "UPDATE cuenta SET nombre = " + nombre + " WHERE idSuscripcion = " + idSuscripcion;
+         String s = "UPDATE Suscripcion SET nombre = " + nombre + " WHERE idSuscripcion = " + idSuscripcion;
          stmt.executeUpdate(s);
       } catch (SQLException e) {System.out.println ("Cannot execute disposicion()" + e);}
 	}
@@ -41,11 +41,11 @@ public class Suscripcion {
 //	private String direccion;
 //	private String encargado;
 	
-	protected String getFechaSuscripcion() {
+	public String getFechaSuscripcion() {
 		return fechaSuscripcion;
 	}
 
-	protected void setFechaSuscripcion(String fechaSuscripcion) {
+	public void setFechaSuscripcion(String fechaSuscripcion) {
 		this.fechaSuscripcion = fechaSuscripcion;
 	}
 

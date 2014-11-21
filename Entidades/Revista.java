@@ -4,8 +4,8 @@ public class Revista {
     Connection conn;
     Statement stmt;
     
-	private int idRevista;
-	private String nombre;
+//	private int idRevista;
+//	private String nombre;
     
     public Revista(){
         try{
@@ -18,10 +18,10 @@ public class Revista {
         }catch (Exception e) { System.out.println ("Cannot connect to database server"); }
     }
 	
-	protected String getNombre(int idRevista) {
+	public String getNombre(int idRevista) {
         String nombre = ""; 
         try {
-            stmt.executeQuery ("SELECT saldo FROM revista WHERE idRevista = " + idRevista);
+            stmt.executeQuery ("SELECT nombre FROM revista WHERE idRevista = " + idRevista);
             ResultSet rs = stmt.getResultSet();
             rs.next(); //Va al registro ya validado
             nombre = rs.getString("nombre");
@@ -31,9 +31,9 @@ public class Revista {
         return nombre;
     }
 
-	protected void setNombre(int idArticulo, String nombre) {
+	public void setNombre(int idArticulo, String nombre) {
 		try {
-         String s = "UPDATE cuenta SET nombre = " + nombre + " WHERE idRevista = " + idRevista;
+         String s = "UPDATE Revista SET nombre = " + nombre + " WHERE idRevista = " + idRevista;
          stmt.executeUpdate(s);
       } catch (SQLException e) {System.out.println ("Cannot execute disposicion()" + e);}
 	}
