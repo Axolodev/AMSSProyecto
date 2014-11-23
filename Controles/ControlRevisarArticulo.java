@@ -10,8 +10,10 @@ public class ControlRevisarArticulos {
    
   
   
-   public void revisarArticulo(int idArt, boolean respuesta){
-       articulo.setEstadoArticulo(idArt,respuesta);
+   public void revisarArticulo(int idArt, String respuesta){
+   	boolean res = respuesta.equals("Revisado");
+
+    articulo.setEstadoArticulo(idArt,res);
 
    }
    
