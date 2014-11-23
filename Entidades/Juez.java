@@ -42,6 +42,29 @@ public class Juez extends Persona {
  	}
  }
 
+	public int getCalificacion(int idJuez) {
+		int fechaInicio = 0; 
+		try {
+			stmt.executeQuery ("SELECT calificacion FROM juez WHERE idJuez = " + idJuez);
+			ResultSet rs = stmt.getResultSet();
+         rs.next(); //Va al registro ya validado
+         calificacion = rs.getString("calificacion");
+         rs.close();
+         return(calificacion);
+     } catch (SQLException e) {
+     	System.out.println ("Cannot getCalificacion()" + e);
+     }
+     return calificacion;
+ }
+
+ public void setCalificacion(String calificacion, int idJuez) {
+ 	try {
+ 		String s = "UPDATE juez SET calificacion = " + calificacion + " WHERE idJuez = " + idJuez;
+ 		stmt.executeUpdate(s);
+ 	} catch (SQLException e) {
+ 		System.out.println ("Cannot execute setCalificacion()" + e);
+ 	}
+ }
 
  public void revisarArticulo(int idArticulo, boolean aprovado) {
  	try {
