@@ -30,42 +30,52 @@ public class Empleado extends Persona {
      } catch (SQLException e) {System.out.println ("Cannot getCargo()" + e);
  }
  return cargo;
-	}
+}
 
-	public void setCargo(String cargo, int idEmpleado) {
-		try {
+public void setCargo(String cargo, int idEmpleado) {
+	try {
 		String s = "UPDATE empleado SET cargo = " + cargo + " WHERE idEmpleado = " + idEmpleado;
 		stmt.executeUpdate(s);
 	} catch (SQLException e) {
 		System.out.println ("Cannot execute setCargo()" + e);
 	}
-	}
+}
 
-	public void generarNuevoSitio(int idArticulo) {
-		Articulo articulo = new Articulo();
-		try {
-			PrintWriter out = new PrintWriter(new FileWriter("Articulos\\art"
-					+ idArticulo + ".html"));
-			out.println("<html><head><title>" + articulo.getNombre(idArticulo)
-					+ "</title> </head><body>");
+public void generarNuevoSitio(int idArticulo) {
+	Articulo articulo = new Articulo();
+	try {
+		PrintWriter out = new PrintWriter(new FileWriter("Articulos\\art"
+			+ idArticulo + ".html"));
+		out.println("<html><head><title>" + articulo.getNombre(idArticulo)
+			+ "</title> </head><body>");
+		out.println("<p>");
+		if(articulo.getEstadoArticulo(idArticulo)){
+			
+
 
 			BufferedReader br;
-			br = new BufferedReader(new FileReader("Articulos\\Art"
-					+ idArticulo + ".html"));
+			br = new BufferedReader(new FileReader("ArticulosListos\\Art"
+				+ idArticulo + ".html"));
 			String line = null;
-			out.println("<p>");
+			
 			while ((line = br.readLine()) != null) {
 				out.println(line);
 			}
-			out.println("<\\p>");
+			
 
 			br.close();
-			out.println("</body> </html>");
-			out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			
+			
 
+		} else {
+			out.println("Articulo en construccion");
+		}
+		out.println("<\\p>");
+		out.println("</body> </html>");
+		out.close();
+	} catch (IOException e) {
+		e.printStackTrace();
 	}
+}
 
 }

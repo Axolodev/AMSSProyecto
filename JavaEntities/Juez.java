@@ -43,12 +43,12 @@ public class Juez extends Persona {
  }
 
 	public int getCalificacion(int idJuez) {
-		int fechaInicio = 0; 
+		int calificacion = 0; 
 		try {
 			stmt.executeQuery ("SELECT calificacion FROM juez WHERE idJuez = " + idJuez);
 			ResultSet rs = stmt.getResultSet();
          rs.next(); //Va al registro ya validado
-         calificacion = rs.getString("calificacion");
+         calificacion = rs.getInt("calificacion");
          rs.close();
          return(calificacion);
      } catch (SQLException e) {
