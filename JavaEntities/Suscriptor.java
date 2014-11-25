@@ -110,6 +110,31 @@ String[] parts;
 		this.setFechaVencimientoSuscripcion(fechaVencimientoSuscripcion, idSuscriptor);
 	}
 
+public void crearSuscripcion(int idSuscriptor) {
+String fechaVencimientoSuscripcion = this.getFechaVencimientoSuscripcion(idSuscriptor);
+String fechaInicioSuscripcion = this.getFechaInicioSuscripcion(idSuscriptor);
+String[] parts;
+
+	if (!fechaInicioSuscripcion.equals("")) {
+		parts = fechaVencimientoSuscripcion.split("-");
+		
+	} else {
+		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		Date date = new Date();
+		fechaInicioSuscripcion= dateFormat.format(date);
+		parts = fechaInicioSuscripcion.split("-");
+		}
+
+		int month = Integer.parseInt(parts[1]);
+		int year = Integer.parseInt(parts[2]);
+		year++;
+		
+		fechaVencimientoSuscripcion = parts[0] + "-" + month + "-" + year;
+
+		this.setFechaInicioSuscripcion(fechaInicioSuscripcion, idSuscriptor);
+		this.setFechaVencimientoSuscripcion(fechaVencimientoSuscripcion, idSuscriptor);
+	}
+
 	public void generarPedido(int[] numeros) {
 		for (int i = 0; i < numeros.length; i++) {
 			System.out.println("Agregado numero " + numeros[i] + " al pedido.");
