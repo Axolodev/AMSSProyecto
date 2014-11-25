@@ -10,7 +10,7 @@ public class ControlEvaluarActividadJuez {
    
   
    public void evaluarJuez(int idJ, String cal){
-       juez.setCalificacion(cal,idJ)
+       juez.setCalificacion(cal,idJ);
 
    }
    

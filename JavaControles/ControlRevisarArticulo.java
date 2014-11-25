@@ -1,14 +1,13 @@
 package controles;
 import entidades.Articulo;
 
-public class ControlRevisarArticulos {
+public class ControlRevisarArticulo {
    Articulo articulo;
 
-   public ControlRevisarArticulos(){
+   public ControlRevisarArticulo(){
      articulo = new Articulo(); //Asume que la instancia persiste durante la sesion
    }
-   
-  
+ 
   
    public void revisarArticulo(int idArt, String respuesta){
    	boolean res = respuesta.equals("Revisado");

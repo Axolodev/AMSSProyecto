@@ -2,7 +2,7 @@ package controles;
 import entidades.Suscriptor;
 
 public class ControlCrearSuscripcion {
-   Suscripcion s1;
+   Suscriptor s1;
 
    public ControlCrearSuscripcion(){
      s1 = new Suscriptor(); //Asume que la instancia persiste durante la sesion

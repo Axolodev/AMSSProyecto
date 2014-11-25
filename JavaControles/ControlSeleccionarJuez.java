@@ -7,12 +7,4 @@ public class ControlSeleccionarJuez {
    public ControlSeleccionarJuez(){
      juez = new Juez(); 
    }
-   
- 
-   public void renovarSuscripcion(string fechaNueva){
-       s1.setFechaSuscripcion(fechaNueva);
-
-   }
-   
-  
 }

@@ -1,10 +1,10 @@
 package controles;
 import entidades.Suscriptor;
 
-public class ControlRenovarSuscripcion {
-   Suscripcion s1;
+public class ControlCancelarSuscripcion {
+   Suscriptor s1;
 
-   public ControlRenovarSuscripcion(){
+   public ControlCancelarSuscripcion(){
      s1 = new Suscriptor(); //Asume que la instancia persiste durante la sesion
    }
    
