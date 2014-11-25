@@ -17,6 +17,7 @@ public class InterfazCancelarSuscripcion extends HttpServlet {
   public void doGet(HttpServletRequest request,
         HttpServletResponse response)
         throws IOException {
+          ce = new ControlCancelarSuscripcion();
     thisResponse = response;
     thisRequest = request;
     thisResponse.setContentType("text/html");
@@ -25,12 +26,13 @@ public class InterfazCancelarSuscripcion extends HttpServlet {
     out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">");
     out.println("<HTML>");
     out.println("<HEAD>");
+    out.println("<link rel='stylesheet' type='text/css' href='myStyle.css'/>");
     out.println("<META http-equiv=Content-Type content=\"text/html\">");
     out.println("</HEAD>");
     out.println("<BODY>");
     out.println("<TITLE>Editorial </TITLE>");
     out.println("<h2>Suscripciones</h2>");
-    out.println("<h3>Cancelarsh Suscripcion</h3>");
+    out.println("<h3>Cancelar Suscripcion</h3>");
     
     String operacion = request.getParameter("operacion");
     if(operacion == null){ // El menu nos envia un parametro para indicar el inicio de una transaccion
@@ -42,14 +44,14 @@ public class InterfazCancelarSuscripcion extends HttpServlet {
   
   public void iniciarCancelacion(){  
     out.println("<p>Indique su numero de suscriptor</p>");
-    out.println("<form method=\"GET\" action=\"Renovar\">");
+    out.println("<form method=\"GET\" action=\"Cancelar\">");
     out.println("<input type=\"hidden\" name=\"operacion\" value=\"cancelacion\"/>");
     out.println("<p> ID Suscriptor  <input type=\"text\" name=\"idS\" size=\"15\"></p>");
     out.println("<p><input type=\"submit\" value=\"Enviar\"name=\"B1\"></p>");
     out.println("</form>");
  
     out.println("<form method=\"GET\" action=\"menu.html\">");
-    out.println("<p><input type=\"submit\" value=\"Cancelar\"name=\"B2\"></p>");
+    out.println("<p><input type=\"submit\" value=\"cancel\"name=\"B2\"></p>");
     out.println("</form>");
 
     out.println("</BODY>");
@@ -58,7 +60,7 @@ public class InterfazCancelarSuscripcion extends HttpServlet {
   
   
 
-  public void renovarSuscripcion(){  
+  public void cancelarSuscripcion(){  
     int idSuscriptor = Integer.parseInt(thisRequest.getParameter("idS").trim());
     
      ce.cancelarSuscripcion(idSuscriptor);

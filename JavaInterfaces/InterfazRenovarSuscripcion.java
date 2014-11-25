@@ -17,6 +17,8 @@ public class InterfazRenovarSuscripcion extends HttpServlet {
   public void doGet(HttpServletRequest request,
         HttpServletResponse response)
         throws IOException {
+
+        ce = new ControlRenovarSuscripcion();
     thisResponse = response;
     thisRequest = request;
     thisResponse.setContentType("text/html");
@@ -25,6 +27,7 @@ public class InterfazRenovarSuscripcion extends HttpServlet {
     out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">");
     out.println("<HTML>");
     out.println("<HEAD>");
+    out.println("<link rel='stylesheet' type='text/css' href='myStyle.css'/>");
     out.println("<META http-equiv=Content-Type content=\"text/html\">");
     out.println("</HEAD>");
     out.println("<BODY>");
@@ -59,7 +62,7 @@ public class InterfazRenovarSuscripcion extends HttpServlet {
   
   
 
-  public void crearSuscripcion(){  
+  public void renovarSuscripcion(){  
     int idSuscriptor = Integer.parseInt(thisRequest.getParameter("idS").trim());
 
   int m = Integer.parseInt(thisRequest.getParameter("mes").trim());

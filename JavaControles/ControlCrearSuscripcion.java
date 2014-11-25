@@ -10,7 +10,7 @@ public class ControlCrearSuscripcion {
    
   //NO SABEMOS SI OCUPAMOS UN ID DEL CLIENTE PARA SABER DE QUIEN ES LA SUSCRIPCION
   
-   public void cancelarSuscripcion(int idSuscriptor){
+   public void crearSuscripcion(int idSuscriptor){
        s1.crearSuscripcion(idSuscriptor);
 
    }

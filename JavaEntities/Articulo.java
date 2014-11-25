@@ -1,7 +1,7 @@
 package entidades;
 import java.sql.*;
 import java.io.*;
-
+import java.util.*;
 
 public class Articulo {
 	Connection conn;
@@ -60,11 +60,11 @@ public String getFechaRevision(int idArticulo) {
 
  public void setFechaRevision(int idArticulo, String fechaRevision) {
  	try {
-		String s = "UPDATE articulo SET fechaRevision = " + fechaRevision + " WHERE idArticulo = " + idArticulo;
-		stmt.executeUpdate(s);
-	} catch (SQLException e) {
-		System.out.println ("Cannot execute setFechaRevision()" + e);
-	}
+ 		String s = "UPDATE articulo SET fechaRevision = " + fechaRevision + " WHERE idArticulo = " + idArticulo;
+ 		stmt.executeUpdate(s);
+ 	} catch (SQLException e) {
+ 		System.out.println ("Cannot execute setFechaRevision()" + e);
+ 	}
  }
 
  public String getFechaPublicacion(int idArticulo) {
@@ -84,11 +84,11 @@ public String getFechaRevision(int idArticulo) {
 
  public void setFechaPublicacion(int idArticulo, String fechaPublicacion) {
  	try {
-		String s = "UPDATE articulo SET fechaPublicacion = " + fechaPublicacion + " WHERE idArticulo = " + idArticulo;
-		stmt.executeUpdate(s);
-	} catch (SQLException e) {
-		System.out.println ("Cannot execute setFechaPublicacion()" + e);
-	}
+ 		String s = "UPDATE articulo SET fechaPublicacion = " + fechaPublicacion + " WHERE idArticulo = " + idArticulo;
+ 		stmt.executeUpdate(s);
+ 	} catch (SQLException e) {
+ 		System.out.println ("Cannot execute setFechaPublicacion()" + e);
+ 	}
  }
 
  public boolean getEstadoArticulo(int idArticulo) {
@@ -108,16 +108,33 @@ public String getFechaRevision(int idArticulo) {
 
  public void setEstadoArticulo(int idArticulo, boolean estadoArticulo) {
  	try {
-		String s = "UPDATE articulo SET estadoArticulo = " + estadoArticulo + " WHERE idArticulo = " + idArticulo;
-		stmt.executeUpdate(s);
-	} catch (SQLException e) {
-		System.out.println ("Cannot execute setEstadoArticulo()" + e);
-	}
+ 		String s = "UPDATE articulo SET estadoArticulo = " + estadoArticulo + " WHERE idArticulo = " + idArticulo;
+ 		stmt.executeUpdate(s);
+ 	} catch (SQLException e) {
+ 		System.out.println ("Cannot execute setEstadoArticulo()" + e);
+ 	}
  }
 
-public String[] listaArticulos(){
-	File folder = new File("ArticulosListos");
-	return folder.list();
-} 
+public String getTexto(int idArticulo) {
+	String nombre = ""; 
+	try {
+		stmt.executeQuery ("SELECT texto FROM articulo WHERE idArticulo = " + idArticulo);
+		ResultSet rs = stmt.getResultSet();
+         rs.next(); //Va al registro ya validado
+         nombre = rs.getString("texto");
+         rs.close();
+         return(nombre);
+     } catch (SQLException e) {System.out.println ("Cannot getTexto()" + e);
+ }
+ return nombre;
+}
 
+public void setTexto(int idArticulo, String texto) {
+	try {
+		String s = "UPDATE articulo SET texto = " + texto + " WHERE idArticulo = " + idArticulo;
+		stmt.executeUpdate(s);
+	} catch (SQLException e) {
+		System.out.println ("Cannot execute setTexto()" + e);
+	}
+}
 }

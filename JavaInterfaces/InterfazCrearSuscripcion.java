@@ -17,6 +17,7 @@ public class InterfazCrearSuscripcion extends HttpServlet {
   public void doGet(HttpServletRequest request,
         HttpServletResponse response)
         throws IOException {
+          ce = new ControlCrearSuscripcion();
     thisResponse = response;
     thisRequest = request;
     thisResponse.setContentType("text/html");
@@ -25,12 +26,13 @@ public class InterfazCrearSuscripcion extends HttpServlet {
     out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">");
     out.println("<HTML>");
     out.println("<HEAD>");
+    out.println("<link rel='stylesheet' type='text/css' href='myStyle.css'/>");
     out.println("<META http-equiv=Content-Type content=\"text/html\">");
     out.println("</HEAD>");
     out.println("<BODY>");
-    out.println("<TITLE>Editorial </TITLE>");
+    out.println("<TITLE>Seng N Bytes | Crear suscripcion </TITLE>");
     out.println("<h2>Jueces</h2>");
-    out.println("<h3>Renovar Suscripcion</h3>");
+    out.println("<h3>Crear Suscripcion</h3>");
     
     String operacion = request.getParameter("operacion");
     if(operacion == null){ // El menu nos envia un parametro para indicar el inicio de una transaccion
@@ -42,7 +44,7 @@ public class InterfazCrearSuscripcion extends HttpServlet {
   
   public void iniciarSuscripcion(){  
     out.println("<p>Indique su numero de suscriptor</p>");
-    out.println("<form method=\"GET\" action=\"Renovar\">");
+    out.println("<form method=\"GET\" action=\"Crear\">");
     out.println("<input type=\"hidden\" name=\"operacion\" value=\"renovacion\"/>");
     out.println("<p> ID Suscriptor  <input type=\"text\" name=\"idS\" size=\"15\"></p>");
     out.println("<p><input type=\"submit\" value=\"Enviar\"name=\"B1\"></p>");
@@ -62,7 +64,7 @@ public class InterfazCrearSuscripcion extends HttpServlet {
     int idSuscriptor = Integer.parseInt(thisRequest.getParameter("idS").trim());
 
   
-    ce.crearSuscripcion(m,idSuscriptor);
+    ce.crearSuscripcion(idSuscriptor);
       out.println("<p>Tu suscripcion ha sido creada con exito</p>");
       out.println("<p>Gracias por registrarte </p>");
       out.println("<p>Te esperamos pronto, sigue leyendo!.</p>");

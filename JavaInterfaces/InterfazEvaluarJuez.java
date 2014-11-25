@@ -10,13 +10,15 @@ public class InterfazEvaluarJuez extends HttpServlet {
   HttpServletResponse thisResponse;
   HttpServletRequest thisRequest;
   PrintWriter out;
-  ControlEvaluarJuez ce;
+  ControlEvaluarActividadJuez ce;
   
   //Es importante observar que todos los metodos definen la operacion GET para
   //que el metodo doGet sea el que se ejecuta al presionar el boton "Enviar". 
   public void doGet(HttpServletRequest request,
         HttpServletResponse response)
         throws IOException {
+
+          ce = new ControlEvaluarActividadJuez();
     thisResponse = response;
     thisRequest = request;
     thisResponse.setContentType("text/html");
@@ -25,6 +27,7 @@ public class InterfazEvaluarJuez extends HttpServlet {
     out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">");
     out.println("<HTML>");
     out.println("<HEAD>");
+    out.println("<link rel='stylesheet' type='text/css' href='myStyle.css'/>");
     out.println("<META http-equiv=Content-Type content=\"text/html\">");
     out.println("</HEAD>");
     out.println("<BODY>");
@@ -61,12 +64,9 @@ public class InterfazEvaluarJuez extends HttpServlet {
 
   public void evaluarJuez(){  
     int idJuez = Integer.parseInt(thisRequest.getParameter("idJ").trim());
-    int cali = Integer.parseInt(thisRequest.getParameter("calificacion").trim());
+    String cali = thisRequest.getParameter("calificacion").trim();
     
-     ce.evaluarJuez(idJ,cali);
-
-   
-      float saldo = ce.consultaSaldo(cuenta); 
+     ce.evaluarJuez(idJuez, cali);      
       out.println("<p>Tu calificacion ha sido registrada</p>");
       out.println("<p>Gracias por haber evaluado al juez</p>");
       out.println("<p>Presione el boton para terminar.</p>");
