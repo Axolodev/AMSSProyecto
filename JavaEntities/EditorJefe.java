@@ -19,7 +19,7 @@ public class EditorJefe extends Persona {
 	}
 
 
-	public void revisarArticulo(Articulo idArticulo, boolean aprovado) {
+	public void revisarArticulo(int idArticulo, boolean aprovado) {
 	try {
 		String s = "UPDATE articulo SET estadoArticulo = " + aprovado + " WHERE idArticulo = " + idArticulo;
 		stmt.executeUpdate(s);

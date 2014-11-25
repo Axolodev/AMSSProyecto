@@ -41,41 +41,4 @@ public void setCargo(String cargo, int idEmpleado) {
 	}
 }
 
-public void generarNuevoSitio(int idArticulo) {
-	Articulo articulo = new Articulo();
-	try {
-		PrintWriter out = new PrintWriter(new FileWriter("Articulos\\art"
-			+ idArticulo + ".html"));
-		out.println("<html><head><title>" + articulo.getNombre(idArticulo)
-			+ "</title> </head><body>");
-		out.println("<p>");
-		if(articulo.getEstadoArticulo(idArticulo)){
-			
-
-
-			BufferedReader br;
-			br = new BufferedReader(new FileReader("ArticulosListos\\Art"
-				+ idArticulo + ".html"));
-			String line = null;
-			
-			while ((line = br.readLine()) != null) {
-				out.println(line);
-			}
-			
-
-			br.close();
-			
-			
-
-		} else {
-			out.println("Articulo en construccion");
-		}
-		out.println("<\\p>");
-		out.println("</body> </html>");
-		out.close();
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
-}
-
 }
