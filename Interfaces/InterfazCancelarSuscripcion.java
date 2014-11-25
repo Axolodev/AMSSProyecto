@@ -10,7 +10,7 @@ public class InterfazCancelarSuscripcion extends HttpServlet {
   HttpServletResponse thisResponse;
   HttpServletRequest thisRequest;
   PrintWriter out;
-  ControlEvluarJuez ce;
+  ControlCancelarSuscripcion ce;
   
   //Es importante observar que todos los metodos definen la operacion GET para
   //que el metodo doGet sea el que se ejecuta al presionar el boton "Enviar". 
@@ -36,7 +36,7 @@ public class InterfazCancelarSuscripcion extends HttpServlet {
     if(operacion == null){ // El menu nos envia un parametro para indicar el inicio de una transaccion
       iniciarCancelacion();  
     }else if(operacion.equals("cancelar")){
-       cancelarSuscripcion();
+       this.cancelarSuscripcion();
     } 
   }
   
@@ -58,13 +58,10 @@ public class InterfazCancelarSuscripcion extends HttpServlet {
   
   
 
-  public void renovarSuscripcion(){  
+  public void cancelarSuscripcion(){  
     int idSuscriptor = Integer.parseInt(thisRequest.getParameter("idS").trim());
     
-     ce.cancelarSuscripcion(idSuscriptor);
-
-   
-   
+     ce.cancelarSuscripcion(idSuscriptor);   
       out.println("<p>Tu cancelacion ha sido realizada con éxito</p>");
       out.println("<p>Vuelve pronto</p>");
       out.println("<form method=\"GET\" action=\"index.html\">");

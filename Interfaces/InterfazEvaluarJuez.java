@@ -10,7 +10,7 @@ public class InterfazEvaluarJuez extends HttpServlet {
   HttpServletResponse thisResponse;
   HttpServletRequest thisRequest;
   PrintWriter out;
-  ControlEvluarJuez ce;
+  ControlEvaluarJuez ce;
   
   //Es importante observar que todos los metodos definen la operacion GET para
   //que el metodo doGet sea el que se ejecuta al presionar el boton "Enviar". 
