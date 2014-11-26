@@ -74,9 +74,9 @@ public void cancelarSuscripcion(int idSuscriptor) {
 	String fechaInicioSuscripcion = "";
 	String fechaVencimientoSuscripcion = "";
 	try {
-		String s = "UPDATE Suscriptor SET fechaVencimientoSuscripcion = " + fechaVencimientoSuscripcion + " WHERE idSuscriptor = " + idSuscriptor;
+		String s = "UPDATE Suscriptor SET fechaVencimientoSuscripcion = '" + fechaVencimientoSuscripcion + "' WHERE idSuscriptor = " + idSuscriptor;
 		stmt.executeUpdate(s);
-		s = "UPDATE Suscriptor SET fechaInicioSuscripcion = " + fechaInicioSuscripcion + " WHERE idSuscriptor = " + idSuscriptor;
+		s = "UPDATE Suscriptor SET fechaInicioSuscripcion = '" + fechaInicioSuscripcion + "' WHERE idSuscriptor = " + idSuscriptor;
 		stmt.executeUpdate(s);
 	} catch (SQLException e) {
 		System.out.println ("Cannot execute setFechaVencimientoSuscripcion()" + e);

@@ -76,6 +76,16 @@ public class Juez extends Persona {
  	}
  }
 
+ public void crearJuez(String fechaInicio , String calificacion, int idJuez){
+	 	try {
+	 		String s = "INSERT INTO juez ";
+	 		String d = "VALUES ('" + idJuez + "','" + fechaInicio + "', '" + calificacion +"''); ";
+	 		stmt.executeUpdate(s + d);
+	 	} catch (SQLException e) {
+	 		System.out.println ("Cannot execute crearJuez()" + e);
+	 	}
+	 }
+
  public void sugerirTemas(String tema){
 		// Agregar temas a los sugeridos 
  }
